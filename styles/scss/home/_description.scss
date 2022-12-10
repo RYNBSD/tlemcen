@@ -1,0 +1,79 @@
+@use '../tools/mixins' as *;
+
+.tlemcen__home-description {
+    width: 100%;
+
+    color: var(--light-color);
+
+    &_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        gap: 5rem;
+
+        padding: 5rem 0;
+
+        &-title {
+            > h1 {
+                font-size: var(--xlarge-font);
+            }
+        }//-title
+
+        &-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 2rem;
+            place-items: center;
+
+            &_img {
+                > img {
+                    position: relative;
+
+                    width: 100%;
+                    height: 100%;
+                    
+                    border-radius: 2rem;
+
+                    &::before {
+                        content: "";
+
+                        position: absolute;
+                        top: 5rem;
+                        left: 5rem;
+
+                        width: 100%;
+                        height: 100%;
+
+                        background-color: #fff;
+
+                    }
+                }
+            }//_img
+
+            &_desc {
+                width: 100%;
+
+                > h3 {
+                    font-size: var(--small-font);
+    
+                    text-align: center;
+                    font-weight: 400;
+
+                    > span {
+                        font-weight: 600;
+                    }
+                }
+            }//_desc
+
+            @include mediaQueryMax($smallScreen) {
+                & {
+                    grid-template-columns: repeat(1, 1fr);
+                    column-gap: 0;
+                    row-gap: 2rem;
+                }
+            }
+        }//-info
+    }//_container
+}//main

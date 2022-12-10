@@ -1,0 +1,208 @@
+@use '../tools/mixins' as *;
+
+.tlemcen__home-discover {
+    width: 100%;
+    min-height: 100vh;
+
+    background-color: var(--dark-color);
+    color: var(--light-color);
+
+    &_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 2rem;
+
+        &-title {
+            width: 100%;
+            text-align: center;
+
+            > h1 {
+                font-size: var(--xlarge-font);
+            }
+        }//-title
+
+        &-element {
+            min-height: 100vh;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 2rem;
+
+            place-items: center;
+
+            @include mediaQueryMax($smallScreen) {
+                & {
+                    grid-template-columns: repeat(1, 1fr);
+                    column-gap: 0;
+                    row-gap: 2rem;
+                }
+            }
+        
+            &_info {
+                position: relative;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+
+                gap: 2rem;
+
+                height: 100%;
+
+                @include mediaQueryMax($smallScreen) {
+                    & { 
+                        height: initial;
+                    }
+                }
+
+                &-getStarted {
+                    @include mediaQueryMax($smallScreen) {
+                        & {
+                            display: none;
+                        }
+                    }
+
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    > h1 {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+
+                        font-size: 15rem;
+
+                        color: var(--light-glass);
+                    }
+
+                    > div {
+                        position: absolute;
+                        top: 10rem;
+                        left: 0;
+                        z-index: 10;
+
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        
+                        width: 12.5rem;
+
+                        > div {
+                            width: 2.5rem;
+                            height: .1rem;
+
+                            background-color: var(--primary-color-gold);
+                        }
+                        > h4 {
+                            
+                            color: var(--primary-color-gold);
+
+                            letter-spacing: 1px;
+                            font-size: var(--xsmall-font);
+                        }
+                    }
+                }//-getStarted
+
+                &-title, &-desc {
+                    padding-left: 5rem;
+
+                    @include mediaQueryMax($smallScreen) {
+                        & {
+                            width: 100%;
+                        }
+                    }                    
+                }
+
+                &-title {
+                    > h1 {
+                        @include mediaQueryMax($smallScreen) {
+                            & {
+                                font-size: var(--medium-font);
+                            }
+                        }
+
+                        font-size: var(--large-font);
+                    }
+                }//-title
+
+                &-desc {
+                    > h2 {
+                        @include mediaQueryMax($smallScreen) {
+                            & {
+                                line-height: 1.75rem;
+                                font-size: var(--xsmall-font);
+                            }
+                        }
+
+                        font-weight: 400;
+                        font-size: 1.75rem;
+                        line-height: 3rem;
+                    }
+                }//-desc
+
+                &-readMore {
+                    // @include mediaQueryMax($smallScreen) {
+                    //     & {
+                    //         display: none;
+                    //     }
+                    // }
+
+                    width: 14rem;
+                    padding-left: 5rem;
+
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    cursor: pointer;
+
+                    &:hover {
+                        > svg {
+                            transform: translateX(1rem);
+                        }
+                    }
+                    
+                    > h3 {
+                        font-size: var(--xsmall-font);
+                        color: var(--primary-color-gold);
+                    }
+
+                    > svg {
+                        transition: transform .5s ease;
+                    }
+                }//-readMore
+            }//_info
+
+            &_img {
+                width: 42rem;
+                height: 58.1rem;
+
+                @include mediaQueryMax($smallScreen) {
+                    & {
+                        order: -1;
+                    }
+                }
+
+                @include mediaQueryMax($smallScreen) {
+                    & {
+                        //450 × 338 px
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                > img {
+                    width: 100%;
+                    height: 100%;
+
+                    object-fit: cover;
+                }
+            }//_img
+        }//-element
+    }//_container
+}//main

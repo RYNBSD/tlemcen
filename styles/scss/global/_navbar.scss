@@ -1,0 +1,189 @@
+@use '../tools/mixins' as *;
+
+.tlemcen__nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    width: 100vw;
+
+    background-color: var(--dark-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    color: var(--light-color);
+
+    padding-top: .5rem;
+
+    &-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 2rem;
+        
+        &_img {
+            > img {
+                @include mediaQueryMax($mediumScreen) {
+                    & {
+                        width: 20rem;
+                        height: 7.5rem;
+                    }
+                }
+                @include mediaQueryMax($smallScreen) {
+                    & {
+                        width: 15rem;
+                        height: 5rem;
+                    }
+                }
+            }
+        }//_img
+
+        &_options {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 1rem;
+
+            background-color: var(--light-color);
+            border-radius: 2rem;
+
+            
+            &-theme, &-menu {
+                
+                padding: .5rem;
+
+                > button {
+                    cursor: pointer;
+
+                    background-color: transparent;
+
+                    > svg {
+                        color: var(--dark-color);
+                    }
+                }
+
+                @include mediaQueryMax($mediumScreen) {
+                    & {
+                        padding: .35rem;
+                    }
+                }
+                @include mediaQueryMax($mediumScreen) {
+                    & {
+                        padding: .25rem;
+                    }
+                }
+            }//-theme //-menu
+        }//_options
+    }//-navigation
+
+    &-list {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 1000;
+        
+        width: 25.5rem;
+        height: 100vh;
+
+        background-color: var(--light-color);
+
+        transition: right .5s ease;
+
+        &.active {
+            right: 0;
+        }
+
+        &_close {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            color: var(--dark-color);
+            
+            padding: 1rem 2rem;
+
+            > div {
+                cursor: pointer;
+            }
+        }
+
+        &_router {
+            border: 1px solid var(--dark-color);
+            border-left: none;
+            border-right: none;
+
+            padding: 1rem .5rem;
+
+            font-size: var(--xsmall-font);
+
+            
+            > a {
+                text-decoration: none;
+
+                color: var(--dark-color);
+            }
+        }//_router
+
+        &_choices {
+            border: 1px solid var(--dark-color);
+            border-left: none;
+            border-right: none;
+
+            padding: 1rem .5rem;
+            margin-top: 1rem;
+
+            > div {
+                cursor: pointer;
+
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+                align-items: center;
+
+                font-size: var(--xsmall-font);
+
+                color: var(--dark-color);
+
+                gap: 1rem;
+            
+                &:hover {
+                    svg {
+                        transform: rotate(-90deg);
+                    }
+                }
+
+                > svg {
+                    transition: all .5s ease;
+                }
+
+            }
+
+            &:hover {
+                > ul {
+                    height: fit-content;
+
+                    padding: 1rem 3rem;
+                }
+            }
+
+            > ul {
+                list-style: none;
+                height: 0;
+            
+                overflow: hidden;
+
+                transition: all .5s ease-out;
+
+                > li {
+                    margin: 1rem 0;
+                    cursor: pointer;
+
+                    color: var(--dark-color);
+                }
+            }
+        }//_choices
+    }//-list
+}//main

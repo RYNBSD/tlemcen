@@ -1,0 +1,122 @@
+@use '../tools/mixins' as *;
+
+.tlemcen__home-features {
+    width: 100%;
+    height: 100vh;
+
+    color: var(--dark-color);
+
+    @include mediaQueryMax($smallScreen) {
+        & {
+            height: fit-content;
+        }
+    }
+
+    &_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 2rem;
+
+        @include mediaQueryMax($smallScreen) {
+            gap: 5rem;
+        }
+
+        &-title {
+
+            > h1 {
+                color: var(--light-color);
+                font-size: var(--xlarge-font);
+            }
+        }//-title
+
+        &-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 2rem;
+
+            width: 100%;
+            height: 100%;
+
+            place-items: center;
+            
+            overflow: hidden;
+
+            @include mediaQueryMax($smallScreen) {
+                & {
+                    grid-template-columns: repeat(1, 1fr);
+                }
+            }
+
+            &_img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                overflow: hidden;
+
+                width: 100%;
+                height: 100%;
+
+                @include mediaQueryMax($smallScreen) {
+                    & {
+                        display: none;
+                    }
+                }
+
+                > img {
+                    width: 100%;
+                    height: 100%;
+
+                    object-fit: cover;
+                    object-position: right top;
+                }
+            }//_img
+
+            &_info {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 2rem;
+                row-gap: 2rem;
+
+                place-items: center;
+
+                @include mediaQueryMax($smallScreen) {
+                    & {
+                        grid-template-columns: repeat(1, 1fr);
+                        column-gap: 0;
+                    }
+                }
+            
+                &-element {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    gap: 2rem;
+
+                    width: 22.5rem;
+                    padding: 3rem 1rem;
+
+                    border-radius: 2rem;
+                    border: .5rem solid var(--primary-color-gold);
+
+                    background-color: var(--light-color);
+
+                    > h1 {
+                        font-size: var(--small-font);
+                    }
+
+                    > p {
+                        text-align: center;
+
+                        font-size: var(--xsmall-font);
+                    }
+                }//-element
+            }//_info
+        }//-details
+    }//_container
+}//main

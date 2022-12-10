@@ -1,0 +1,90 @@
+@use '../tools/mixins' as *;
+
+.tlemcen__home-header {
+    width: 100vw;
+    min-height: 100vh;
+
+    &_container {
+        padding-top: 10rem;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+
+        place-items: center;
+
+        &-desc, &-img {
+            width: 100%;
+        }
+
+        &-desc {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
+            gap: 5rem;
+
+            > h1 {
+                font-size: 7.5rem;
+                color: var(--light-color);
+
+                @include mediaQueryMax($smallScreen) {
+                    & {
+                        font-size: var(--large-font);
+                    }
+                }
+            }
+
+            &_btn {
+                cursor: pointer;
+
+                border-radius: 2rem;
+
+                > h2 {
+                    padding: .5rem 1rem;
+                    font-size: var(--medium-font);
+
+                    color: #1a1a1a;
+                    
+                    //color: var(--light-color);
+                    @include mediaQueryMax($smallScreen) {
+                        & {
+                            font-size: var(--small-font);
+                        }
+                    }
+                }
+            }//_btn
+        }//-desc
+
+        &-img {
+            width: 100%;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+
+            > img {
+                width: 50rem;
+                height: 50rem;
+
+                object-fit: contain;
+
+                @include mediaQueryMax($smallScreen) {
+                    & {
+                        width: 35rem;
+                        height: 35rem;
+                    }
+                }
+            }
+        }//-img
+
+        @include mediaQueryMax($smallScreen) {
+            & {
+                grid-template-columns: repeat(1, 1fr);
+                column-gap: 0;
+                row-gap: 2rem;
+            }
+        }
+    }//_container
+}//main
