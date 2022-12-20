@@ -1,9 +1,9 @@
 import React from 'react'
 
-const NotFound = () => {
+const ClientSideError = () => {
   return (
-    <div>NotFound</div>
+    <div>ClientSideError</div>
   )
 }
 
-export default NotFound
+export default ClientSideError

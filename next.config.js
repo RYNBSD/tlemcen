@@ -2,9 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // experimental: {
-  //   nextScriptWorkers: true,
-  // },
+  experimental: {
+    appDir: false,
+    // nextScriptWorkers: true,
+  },
+  images: {
+    unoptimized: true,
+  },
 }
 
 module.exports = nextConfig
