@@ -53,9 +53,20 @@ body.light {
     --dark-glass: rgba(255, 255, 255, 0.1);
 }
 
+body.ar {
+    * {
+        direction: rtl;
+    }
+
+    html {
+        direction: rtl;
+    }
+}
+
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
+    direction: ltr;
 
     width: 100%;
     height: 100%;
@@ -87,6 +98,11 @@ img {
     margin: 0 auto;
 }
 
+.f-center {
+    justify-content: center;
+    align-items: center;
+}
+
 .home-header-explore-btn {
     background-color:hsla(284,44%,67%,1);
     background-image:
@@ -98,12 +114,25 @@ img {
     radial-gradient(at 64% 7%, hsla(351,61%,50%,1) 0px, transparent 50%);
 }
 
+// Admin //
+@import './admin/login';
+@import './admin/historical/new';
+@import 'admin/historical/index';
+
 // Global //
 @import './global/navbar';
 @import './global/footer';
+@import './global/loading';
+@import './global/fetchingError';
+@import './global/clientOrServerError';
+@import './global/aboutUs';
 
 // Home //
 @import './home/header';
 @import './home/description';
 @import './home/features';
 @import './home/discover';
+
+// Explore //
+@import './explore/historical/index';
+@import './explore/historical/item';

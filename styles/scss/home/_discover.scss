@@ -8,6 +8,7 @@
     color: var(--light-color);
 
     &_container {
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -25,6 +26,7 @@
         }//-title
 
         &-element {
+            width: 100%;
             min-height: 100vh;
 
             display: grid;
@@ -168,8 +170,11 @@
                     }
                     
                     > h3 {
+                        > a {
+                            text-decoration: none;
+                            color: var(--primary-color-gold);
+                        }
                         font-size: var(--xsmall-font);
-                        color: var(--primary-color-gold);
                     }
 
                     > svg {

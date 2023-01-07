@@ -42,10 +42,13 @@
                 border-radius: 2rem;
 
                 > h2 {
+                    > a {
+                        text-decoration: none;
+                        color: #1a1a1a;
+                    }
+
                     padding: .5rem 1rem;
                     font-size: var(--medium-font);
-
-                    color: #1a1a1a;
                     
                     //color: var(--light-color);
                     @include mediaQueryMax($smallScreen) {

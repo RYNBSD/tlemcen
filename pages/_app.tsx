@@ -7,10 +7,11 @@ import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux';
 import React from 'react';
 import Script from 'next/script';
+import Head from 'next/head';
 
 //LOGIC
 import { store } from '../store/store';
-import ThemeContextProvider from '../context/theme';
+import { ThemeContextProvider, LanguageContextProvider, AdminContextProvider } from '../context';
 
 import { Layout } from '../containers';
 
@@ -18,32 +19,25 @@ import { Layout } from '../containers';
 import '../styles/_globals.scss';
 
 export default function App({ Component, pageProps }: AppProps) {
+
   return (
-    <Provider store={store}>
-      <ThemeContextProvider>
-        <head>
-          <meta charSet="UTF-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-        </head>
-        <Layout>
-          <Script
-            type='text/javascript'
-            src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
-          />
-          <Component {...pageProps} />
-          <Script
-            type='text/javascript'
-            dangerouslySetInnerHTML={{
-              __html: `
-                function googleTranslateElementInit() {
-                  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-                }
-              `
-            }}
-          />
-        </Layout>
-      </ThemeContextProvider>
-    </Provider>
+    <>
+      <Head>
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <Provider store={store}>
+        <ThemeContextProvider>
+          <LanguageContextProvider>
+            <AdminContextProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </AdminContextProvider>
+          </LanguageContextProvider>
+        </ThemeContextProvider>
+      </Provider>
+    </>
   );
 }

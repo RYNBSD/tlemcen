@@ -116,6 +116,7 @@
             border-right: none;
 
             padding: 1rem .5rem;
+            margin-bottom: 1rem;
 
             font-size: var(--xsmall-font);
 
@@ -182,6 +183,24 @@
                     cursor: pointer;
 
                     color: var(--dark-color);
+
+                    > a {
+                        text-decoration: none;
+                        color: var(--dark-color);
+                    }
+
+                    > input, h3 {
+                        cursor: pointer;
+
+                        font-size: var(--xsmall-font);
+                        color: var(--dark-color);
+                    }
+
+                    > input {
+                        background-color: transparent;
+                        border: none;
+                    }
+                    
                 }
             }
         }//_choices

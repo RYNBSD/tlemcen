@@ -1,15 +1,76 @@
-import { Database, verbose } from 'sqlite3';
+import { Connection, MysqlError, createConnection } from "mysql";
 
-const conn = (): Database => {
+import { createHistoricalAR, createHistoricalEN } from "../models/historical";
+import { createTouristicAR, createTouristicEN } from "../models/tourisctics";
+import { createSportPathsAR, createSportPathsEN } from "../models/sport/paths";
 
-    const sqlite3 = verbose();
-    const db = new sqlite3.Database(`${process.env.TLEMCEN_DB_NAME}`);
+const connectToMySQL = (): Connection | null => {
+    const {
+        MYSQL_ADMIN_HOST,
+        MYSQL_USER,
+        MYSQL_DB,
+    } = process.env;
 
-    db.serialize(() => {
-        db.run("CREATE TABLE IF NOT EXISTS lorem (info TEXT)");
+    const conn = createConnection({
+        host: MYSQL_ADMIN_HOST,
+        user: MYSQL_USER,
+        password: "",
+        database: MYSQL_DB,
     });
 
-    return db;
+    if (!conn) {
+        console.error("Failed to connect to database");
+        return null;
+    }
+
+    try {
+        conn.query(createHistoricalEN, (err: MysqlError) => {
+            if (err) {
+                console.error(err);
+                throw err;
+            }
+        });
+
+        conn.query(createHistoricalAR, (err: MysqlError) => {
+            if (err) {
+                console.error(err);
+                throw err;
+            }
+        });
+    
+        conn.query(createTouristicEN, (err: MysqlError) => {
+            if (err) {
+                console.error(err);
+                throw err;
+            }
+        });
+
+        conn.query(createTouristicAR, (err: MysqlError) => {
+            if (err) {
+                console.error(err);
+                throw err;
+            }
+        });
+    
+        conn.query(createSportPathsEN, (err: MysqlError) => {
+            if (err) {
+                console.error(err);
+                throw err; 
+            }
+        });
+
+        conn.query(createSportPathsAR, (err: MysqlError) => {
+            if (err) {
+                console.error(err);
+                throw err; 
+            }
+        });
+    }
+    catch (e) {
+        return null;
+    }
+
+    return conn;
 }
 
-export default conn;
+export default connectToMySQL;

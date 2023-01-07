@@ -1,0 +1,41 @@
+.aboutUs {
+    width: 100%;
+    min-height: 100vh;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+
+        padding-top: 15rem;
+
+        color: var(--light-color);
+
+        &-objectives, &-assembly {
+            > h1 {
+                font-size: var(--medium-font);
+                margin-bottom: 1rem;
+                text-decoration: underline;
+            }
+        }
+
+        &-objectives {
+            > ul {
+                font-size: var(--small-font);
+                list-style: decimal-leading-zero;
+                padding-left: 7.5rem;
+
+                > li {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+
+        &-assembly {
+            > p {
+                font-size: var(--small-font);
+                padding-left: 5rem;
+            }
+        }
+    }
+}

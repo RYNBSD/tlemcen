@@ -1,0 +1,25 @@
+.historicalItems {
+    min-height: 100vh;
+    width: 100vw;
+
+    padding-top: 15rem;
+
+    background-color: var(--dark-color);
+    color: var(--light-color);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+
+        .tlemcen__home-discover_container-element_info-readMore {
+            > h3 {
+                > a {
+                    color: var(--light-color);
+                    text-decoration: none;
+                }
+            }
+        }
+
+    }// __container
+}
