@@ -1,7 +1,12 @@
-import { discoverData } from "./discoverData";
-import { featuresData } from "./featuresData";
+import { discoverDataEN, discoverDataAR } from "./discoverData";
+import { featuresDataEN, featuresDataAR } from "./featuresData";
 
 export {
-    discoverData,
-    featuresData,
+    // English
+    discoverDataEN,
+    featuresDataEN,
+
+    // Arabic
+    featuresDataAR,
+    discoverDataAR,
 }
